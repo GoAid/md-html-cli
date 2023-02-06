@@ -1,0 +1,4 @@
+[submodule "gh-pages"]
+	path = gh-pages
+	url = https://github.com/GoAid/md-html-cli
+	branch = gh-pages
