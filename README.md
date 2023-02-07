@@ -98,6 +98,8 @@ and create a `.gohtml` type template file with the same name in the folder.
 ## Acknowledgement
 
 - <https://github.com/nocd5/md2html>
+- <https://github.com/tscanlin/tocbot>
+- <https://github.com/mathjax/MathJax>
 - <https://github.com/shd101wyy/markdown-preview-enhanced>
 - <https://github.com/PuerkitoBio/goquery>
 - <https://github.com/jessevdk/go-flags>

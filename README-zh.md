@@ -98,6 +98,8 @@ md-html-cli -i "example/*.md" -o gh-pages/index.html -l en -t "Example Page" -f 
 ## 鸣谢
 
 - <https://github.com/nocd5/md2html>
+- <https://github.com/tscanlin/tocbot>
+- <https://github.com/mathjax/MathJax>
 - <https://github.com/shd101wyy/markdown-preview-enhanced>
 - <https://github.com/PuerkitoBio/goquery>
 - <https://github.com/jessevdk/go-flags>
