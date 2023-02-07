@@ -44,7 +44,7 @@ Help Options:
   /h, /help              Show this help message
 ```
 
-### 样品
+### 样例
 
 [GitHub Pages](https://GoAid.github.io/md-html-cli/index.html)
 
@@ -97,11 +97,11 @@ md-html-cli -i "example/*.md" -o gh-pages/index.html -l en -t "Example Page" -f 
 
 ### 模板函数
 
-| 函数                                         | 说明                      |
-|--------------------------------------------|-------------------------|
-| `{{ "<!-- HTML 标签 -->" &vert; safeHTML }}` | `safeHTML` 用于保留 HTML 注释 |
-| `{{ "/* CSS 内容 */" &vert; safeCSS }}`      | `safeCSS` 用于保留 CSS 注释   |
-| `{{ "/* JS 内容 */" &vert; safeJS }}`        | `safeJS` 用于保留 JS 注释     |
+| 函数                                                          | 说明                      |
+|-------------------------------------------------------------|-------------------------|
+| <code>{{ "&lt;!-- HTML 标签 --&gt;" &vert; safeHTML }}</code> | `safeHTML` 用于保留 HTML 注释 |
+| <code>{{ "/* CSS 内容 */" &vert; safeCSS }}</code>            | `safeCSS` 用于保留 CSS 注释   |
+| <code>{{ "/* JS 内容 */" &vert; safeJS }}</code>              | `safeJS` 用于保留 JS 注释     |
 
 ## 鸣谢
 

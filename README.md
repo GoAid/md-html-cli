@@ -97,11 +97,11 @@ and create a `.gohtml` type template file with the same name in the folder.
 
 ### template function
 
-| Function                                    | Description                                |
-|---------------------------------------------|--------------------------------------------|
-| `{{ "<!-- HTML tag -->" &vert; safeHTML }}` | `safeHTML` is used to retain HTML comments |
-| `{{ "/* CSS content */" &vert; safeCSS }}`  | `safeCSS` is used to retain CSS comments   |
-| `{{ "/* JS content */" &vert; safeJS }}`    | `safeJS` is used to retain JS comments     |
+| Function                                                     | Description                                |
+|--------------------------------------------------------------|--------------------------------------------|
+| <code>{{ "&lt;!-- HTML tag --&gt;" &vert; safeHTML }}</code> | `safeHTML` is used to retain HTML comments |
+| <code>{{ "/* CSS content */" &vert; safeCSS }}</code>        | `safeCSS` is used to retain CSS comments   |
+| <code>{{ "/* JS content */" &vert; safeJS }}</code>          | `safeJS` is used to retain JS comments     |
 
 ## Acknowledgement
 
