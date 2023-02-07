@@ -257,7 +257,17 @@ func (p *HTMLParser) writeHTML(html string) (err error) {
 		return
 	}
 	var tmpl *template.Template
-	if tmpl, err = template.New(theme).Parse(string(themeTmpl)); err != nil {
+	if tmpl, err = template.New(theme).Funcs(template.FuncMap{
+		"safeHTML": func(html string) template.HTML {
+			return template.HTML(html)
+		},
+		"safeCSS": func(css string) template.CSS {
+			return template.CSS(css)
+		},
+		"safeJS": func(js string) template.JS {
+			return template.JS(js)
+		},
+	}).Parse(string(themeTmpl)); err != nil {
 		return
 	}
 

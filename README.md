@@ -95,6 +95,14 @@ and create a `.gohtml` type template file with the same name in the folder.
 | `{{ .MathJaxTeXSVG }}`       | `MathJax` rendering tool JS tag element                  |
 | `{{ .ConvertedHTML }}`       | The converted HTML main content                          |
 
+### template function
+
+| Function                                    | Description                                |
+|---------------------------------------------|--------------------------------------------|
+| `{{ "<!-- HTML tag -->" &vert; safeHTML }}` | `safeHTML` is used to retain HTML comments |
+| `{{ "/* CSS content */" &vert; safeCSS }}`  | `safeCSS` is used to retain CSS comments   |
+| `{{ "/* JS content */" &vert; safeJS }}`    | `safeJS` is used to retain JS comments     |
+
 ## Acknowledgement
 
 - <https://github.com/nocd5/md2html>

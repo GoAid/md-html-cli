@@ -95,6 +95,14 @@ md-html-cli -i "example/*.md" -o gh-pages/index.html -l en -t "Example Page" -f 
 | `{{ .MathJaxTeXSVG }}`       | `MathJax` 渲染工具 JS 标签元素   |
 | `{{ .ConvertedHTML }}`       | 转换后的 HTML 主内容            |
 
+### 模板函数
+
+| 函数                                         | 说明                      |
+|--------------------------------------------|-------------------------|
+| `{{ "<!-- HTML 标签 -->" &vert; safeHTML }}` | `safeHTML` 用于保留 HTML 注释 |
+| `{{ "/* CSS 内容 */" &vert; safeCSS }}`      | `safeCSS` 用于保留 CSS 注释   |
+| `{{ "/* JS 内容 */" &vert; safeJS }}`        | `safeJS` 用于保留 JS 注释     |
+
 ## 鸣谢
 
 - <https://github.com/nocd5/md2html>
