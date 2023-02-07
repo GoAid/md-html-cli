@@ -146,3 +146,4 @@ tmp
 /node_modules/
 /src/config.sass
 /package-lock.json
+/gh-pages/index.html
