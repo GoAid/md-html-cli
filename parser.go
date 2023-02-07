@@ -245,10 +245,8 @@ func (p *HTMLParser) writeHTML(html string) (err error) {
 	p.ConvertedHTML = template.HTML(html)
 
 	theme := p.Theme
-	switch theme {
-	case ThemeSide:
-	default:
-		theme = ThemeVue
+	if strings.TrimSpace(theme) == "" {
+		theme = "vue"
 	}
 
 	var themeTmpl []byte
