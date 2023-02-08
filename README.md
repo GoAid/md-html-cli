@@ -1,3 +1,4 @@
+<!--suppress ALL-->
 <p align="center">
 <img alt="md-html-cli" src="assets/image/logo.png">
 </p>
