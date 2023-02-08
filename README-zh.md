@@ -38,6 +38,7 @@ Application Options:
   /c, /css:              custom css file path
       /theme:[vue|side]  output HTML theme
       /toc               generate TOC
+  /g, /gen               use HTML comments to record generation time
 
 Help Options:
   /?                     Show this help message
@@ -51,7 +52,7 @@ Help Options:
 此 html 页面由以下命令生成：
 
 ```bash
-md-html-cli -i "example/*.md" -o gh-pages/index.html -l en -t "Example Page" -f example/img/go.png -ems -c example/css/custom-css.css --theme vue --toc
+md-html-cli -i "example/*.md" -o gh-pages/index.html -l en -t "Example Page" -f example/img/go.png -ems -c example/css/custom-css.css --theme vue --toc --gen
 ```
 
 ### 示例
@@ -94,6 +95,7 @@ md-html-cli -i "example/*.md" -o gh-pages/index.html -l en -t "Example Page" -f 
 | `{{ .MathJaxConfig }}`       | `MathJax` 配置文件 JS 标签元素   |
 | `{{ .MathJaxTeXSVG }}`       | `MathJax` 渲染工具 JS 标签元素   |
 | `{{ .ConvertedHTML }}`       | 转换后的 HTML 主内容            |
+| `{{ .GeneratedAt }}`         | 记录生成时间的 HTML 注释          |
 
 ### 模板函数
 
