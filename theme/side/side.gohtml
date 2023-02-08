@@ -11,6 +11,9 @@
   #markdown-toc{margin-left:-20px;margin-right:20px;overflow-y:auto;color:#fff;background:#009483;width:30%;min-width:200px;max-width:400px;height:100vh;position:sticky;top:0;box-shadow:0 0 5px 0 #000;transition:width .5s ease-in-out,min-width .5s ease-in-out}#markdown-toc ul{padding:2em 0;list-style:none}#markdown-toc a{color:#fff;text-decoration:none;display:block;width:100%;line-height:2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#markdown-toc [class*=toc-h]:hover{background:#1b56d0}#markdown-toc [class*=toc-h].toc-active{background:#f7b64a}#markdown-toc [class*=toc-h] :before{content:""}#markdown-toc .toc-h1{font-size:1.3em}#markdown-toc .toc-h1 :before{padding-left:calc(0em + 1em)}#markdown-toc .toc-h2{font-size:1.1em}#markdown-toc .toc-h2 :before{padding-left:calc(1em + 1em)}#markdown-toc .toc-h3{font-size:.9em}#markdown-toc .toc-h3 :before{padding-left:calc(2em + 1em)}#markdown-toc .toc-h4{font-size:.7em}#markdown-toc .toc-h4 :before{padding-left:calc(3em + 1em)}.toc-button{position:fixed;top:.5em;margin-left:.5em;width:1em;height:1em;border-radius:50%;background:#f66;cursor:pointer;transition:transform .5s linear}.toc-button:after,.toc-button:before{transform:rotate(-45deg);position:absolute;background-color:#fff;border-radius:1em;content:""}.toc-button:before{width:75%;height:12.5%;top:43.75%;left:12.5%}.toc-button:after{width:12.5%;height:75%;top:12.5%;left:43.75%}
 </style>
 {{ if .CSS }}{{ .ConvertedCSS }}{{ end }}
+<style>
+  .d2 > svg { max-width: 100% }
+</style>
 <script type="text/javascript"> {{ "/* config.js */" | safeJS }}
   var config={"color":{"bg":"#009483","fg":"#ffffff","active":"#F7B64A","hover":"#1B56D0"},"toc":{"width":"30%","minWidth":"200px","maxWidth":"400px","shiftWidth":"1em","lineHeight":2},"button":{"size":"1em","color":{"bg":"#f66","active":"#5c4"},"duration":500}}
 </script>
