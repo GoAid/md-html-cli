@@ -3,6 +3,18 @@
 <img alt="md-html-cli" src="assets/image/logo.png">
 </p>
 <h1 align="center">md-html-cli</h1>
+
+<p align="center">
+<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/GoAid/md-html-cli?style=flat-square"> 
+<img alt="GitHub forks" src="https://img.shields.io/github/forks/GoAid/md-html-cli?style=flat-square"> 
+<img alt="GitHub watchers" src="https://img.shields.io/github/watchers/GoAid/md-html-cli?style=flat-square"> 
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/GoAid/md-html-cli?color=blue&style=flat-square"> 
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/GoAid/md-html-cli?color=blue&style=flat-square"> 
+<img alt="GitHub license" src="https://img.shields.io/github/license/GoAid/md-html-cli?color=blue&style=flat-square"> 
+<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/GoAid/md-html-cli?color=blue&style=flat-square"> 
+<img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/GoAid/md-html-cli?color=blue&style=flat-square">
+</p>
+
 <p align="center">
 CLI tool for converting markdown to a single html file.
 <br>
