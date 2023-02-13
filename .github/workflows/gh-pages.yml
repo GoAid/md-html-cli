@@ -1,0 +1,49 @@
+name: Update GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v3
+        with:
+         ref: main
+         path: src
+         fetch-depth: 0
+
+      - name: Generate gh-pages
+        run: |
+          cd ./src
+          go mod tidy
+          go run . -i "example/*.md" -o gh-pages/index.html -l en -t "Example Page" -f example/img/go.png -ems -c example/css/custom-css.css --theme vue --toc --gen
+
+#      - name: Deploy
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./gh-pages
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          path: docs
+          submodules: true
+
+      - name: Push
+        run: |
+          pwd
+          tree -L 3
+          mv -f src/gh-pages/index.html docs/index.html
+          cd docs
+          git config --global user.email "zixizixi@vip.qq.com"
+          git config --global user.name "liutianqi"
+          git add index.html
+          git commit -m '🍱 更新 GitHub Pages 示例页面'
+          git push -f
