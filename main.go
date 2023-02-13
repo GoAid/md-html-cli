@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 
 	"github.com/jessevdk/go-flags"
+	_ "github.com/wzshiming/winseq" // Windows 虚拟终端序列
 )
 
 // CLI utility for converting markdown to a single html file
@@ -38,6 +39,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	data := HTMLParser{Options: opts}
-	data.parserMarkdown(files)
+	parser := HTMLParser{Options: opts}
+	parser.parserMarkdown(files)
 }

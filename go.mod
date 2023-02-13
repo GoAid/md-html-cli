@@ -8,6 +8,7 @@ require (
 	github.com/alecthomas/chroma/v2 v2.5.0
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/stefanfritsch/goldmark-fences v1.0.0
+	github.com/wzshiming/winseq v0.0.0-20200720163736-7fa652d2b50e
 	github.com/yuin/goldmark v1.5.4
 	github.com/yuin/goldmark-emoji v1.0.1
 	github.com/yuin/goldmark-highlighting/v2 v2.0.0-20220924101305-151362477c87
