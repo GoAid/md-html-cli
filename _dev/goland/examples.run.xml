@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="examples" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="md-html-cli" />
+    <working_directory value="$PROJECT_DIR$" />
+    <parameters value="-i example/*.md -l en -t &quot;Example Page&quot; -f example/img/go.png -ems -c example/css/custom-css.css --theme vue --toc --gen" />
+    <kind value="PACKAGE" />
+    <package value="github.com/GoAid/md-html-cli" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/main.go" />
+    <method v="2" />
+  </configuration>
+</component>

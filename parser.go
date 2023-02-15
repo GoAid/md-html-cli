@@ -91,6 +91,12 @@ var (
 	}
 )
 
+const (
+	bold      = "\033[39;1m"
+	highlight = "\033[32m"
+	reset     = "\033[0m"
+)
+
 type HTMLParser struct {
 	Options
 
@@ -143,7 +149,7 @@ func (p *HTMLParser) parserMarkdown(files []string) (htmlContent string) {
 			if strings.TrimSpace(p.HTMLTitle) == "" {
 				p.HTMLTitle = file
 			}
-			p.OutputFile = file + ".html"
+			p.OutputFile = strings.TrimSuffix(file, filepath.Ext(file)) + ".html"
 			if err := p.writeHTML(htmlStr); err != nil {
 				_, _ = fmt.Fprintln(os.Stderr, err)
 			}
@@ -151,8 +157,7 @@ func (p *HTMLParser) parserMarkdown(files []string) (htmlContent string) {
 		}
 	}
 
-	bold, reset, highlight := "\033[39;1m", "\033[0m", "\033[32m"
-	fmt.Printf(`✨  Convert of "%s%s%s" is completed! (%s%v%s)`, highlight, p.OutputFile, reset, bold, p.Elapsed, reset)
+	fmt.Printf(`✨  Convert of "%s%s%s" is completed! (%s%v%s)%s`, highlight, p.InputFile, reset, bold, p.Elapsed, reset, "\n")
 	return
 }
 
@@ -198,7 +203,7 @@ func (p *HTMLParser) renderHTMLConcat(inputs []string, markdown goldmark.Markdow
 }
 
 func (p *HTMLParser) writeHTML(html string) (err error) {
-	fmt.Println(" ⏳  Converting", p.OutputFile, "...")
+	fmt.Println("⏳  Converting", bold, p.OutputFile, reset, "...")
 	if strings.TrimSpace(p.HTMLLang) == "" {
 		p.HTMLLang = "en"
 	}
@@ -206,17 +211,15 @@ func (p *HTMLParser) writeHTML(html string) (err error) {
 	if strings.TrimSpace(p.HTMLFavicon) != "" {
 		p.Favicon = true
 		if p.EmbedImage {
-			if f, e := os.Stat(p.HTMLFavicon); !os.IsNotExist(e) && !f.IsDir() {
+			if f, _ := os.Stat(p.HTMLFavicon); f != nil && !f.IsDir() {
 				cwd, _ := os.Getwd()
 				if src, err := decodeBase64(p.HTMLFavicon, cwd); err == nil {
 					mimeType := getImageMime(p.HTMLFavicon)
 					p.HTMLFavicon = fmt.Sprintf("data:%s;base64,%s", mimeType, src)
-
 				}
 			}
 		}
-		p.HTMLFavicon = fmt.Sprintf(`<link rel="shortcut icon" type="image/x-icon" href="%s">`, p.HTMLFavicon)
-		p.FaviconHref = template.HTML(p.HTMLFavicon)
+		p.FaviconHref = template.HTML(fmt.Sprintf(`<link rel="shortcut icon" type="image/x-icon" href="%s">`, p.HTMLFavicon))
 	}
 
 	if p.MathJax {
@@ -252,8 +255,7 @@ func (p *HTMLParser) writeHTML(html string) (err error) {
 			return
 		}
 		p.CSS = true
-		p.CustomCSS = fmt.Sprintf(`<style type="text/css">%s%s</style>`, "\n", c)
-		p.ConvertedCSS = template.HTML(p.CustomCSS)
+		p.ConvertedCSS = template.HTML(fmt.Sprintf(`<style type="text/css">%s%s</style>`, "\n", c))
 	}
 	p.ConvertedHTML = template.HTML(html)
 
