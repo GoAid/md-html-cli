@@ -2,7 +2,7 @@
   <configuration default="false" name="gh-pages" type="GoApplicationRunConfiguration" factoryName="Go Application">
     <module name="md-html-cli" />
     <working_directory value="$PROJECT_DIR$" />
-    <parameters value="-i example/*.md -o gh-pages/index.html -l en -t &quot;Example Page&quot; -f example/img/go.png -ems -c example/css/custom-css.css --theme vue --toc --gen" />
+    <parameters value="-i example/*.md -o gh-pages/index.html -l en -t &quot;Example Page&quot; -f example/img/go.png -ems -b #eee -c example/css/custom-css.css --theme vue --toc --gen" />
     <kind value="PACKAGE" />
     <package value="github.com/GoAid/md-html-cli" />
     <directory value="$PROJECT_DIR$" />

@@ -48,6 +48,7 @@ Application Options:
   /e, /embed             embed image by base64 encoding
   /m, /mathjax           use MathJax
   /s, /span              enable table row/col span
+  /b, /border:           add a border style of a specified color to image labels, e.g. gray, #eee, rgb(0,0,0)
   /c, /css:              custom css file path
       /theme:[vue|side]  output HTML theme
       /toc               generate TOC

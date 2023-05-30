@@ -47,10 +47,11 @@ type Options struct {
 	MathJax   bool `long:"mathjax" short:"m" description:"use MathJax"`
 	TableSpan bool `long:"span" short:"s" description:"enable table row/col span"`
 
-	CustomCSS string `long:"css" short:"c" description:"custom css file path"`
-	Theme     string `long:"theme" choice:"vue" choice:"side" description:"output HTML theme"`
-	TOC       bool   `long:"toc" description:"generate TOC"`
-	Generated bool   `long:"gen" short:"g" description:"use HTML comments to record generation time"`
+	BorderColor string `long:"border" short:"b" description:"add a border style of a specified color to image labels, e.g. gray, #eee, rgb(0,0,0)"`
+	CustomCSS   string `long:"css" short:"c" description:"custom css file path"`
+	Theme       string `long:"theme" choice:"vue" choice:"side" description:"output HTML theme"`
+	TOC         bool   `long:"toc" description:"generate TOC"`
+	Generated   bool   `long:"gen" short:"g" description:"use HTML comments to record generation time"`
 }
 
 // goldmark convert options
@@ -100,8 +101,9 @@ const (
 type HTMLParser struct {
 	Options
 
-	Favicon bool
-	CSS     bool
+	ImageBorder bool
+	Favicon     bool
+	CSS         bool
 
 	FaviconHref   template.HTML
 	MathJaxConfig template.HTML
@@ -241,6 +243,7 @@ func (p *HTMLParser) writeHTML(html string) (err error) {
 		}
 	}
 
+	p.ImageBorder = len(p.BorderColor) > 0
 	if len(p.CustomCSS) > 0 {
 		var fi *os.File
 		if fi, err = os.Open(p.CustomCSS); err != nil {
