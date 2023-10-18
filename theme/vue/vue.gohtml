@@ -82,7 +82,7 @@
   tocbot.init({
     tocSelector: '.js-toc', // Where to render the table of contents.
     contentSelector: '.markdown-preview', // Where to grab the headings to build the table of contents.
-    headingSelector: 'h1, h2, h3', // Which headings to grab inside of the contentSelector element.
+    headingSelector: '{{ .TOCHeadingSelector }}', // Which headings to grab inside of the contentSelector element.
     hasInnerContainers: true, // For headings inside relative or absolute positioned containers within content.
     scrollSmooth: true, // Smooth scrolling enabled.
     scrollSmoothDuration: 300, // Smooth scroll duration.

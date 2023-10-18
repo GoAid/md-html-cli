@@ -40,24 +40,25 @@ Usage:
   go run github.com/GoAid/md-html-cli@latest [OPTIONS]
 
 Application Options:
-  /i, /input:            input Markdown
-  /o, /output:           output HTML
-  /l, /lang:             html lang attribute value, default is en
-  /t, /title:            custom html title, default is output file name
-  /f, /favicon:          favicon image path, if embed is used, will embed by base64 encoding
-  /e, /embed             embed image by base64 encoding
-      /center            whether to center the image
-  /m, /mathjax           use MathJax
-  /s, /span              enable table row/col span
-  /b, /border:           add a border style of a specified color to image labels, e.g. gray, #eee, rgb(0,0,0)
-  /c, /css:              custom css file path
-      /theme:[vue|side]  output HTML theme
-      /toc               generate TOC
-  /g, /gen               use HTML comments to record generation time
+  /i, /input:             input Markdown
+  /o, /output:            output HTML
+  /l, /lang:              html lang attribute value, default is en
+  /t, /title:             custom html title, default is output file name
+  /f, /favicon:           favicon image path, if embed is used, will embed by base64 encoding
+  /e, /embed              embed image by base64 encoding
+      /center             whether to center the image
+  /m, /mathjax            use MathJax
+  /s, /span               enable table row/col span
+  /b, /border:            add a border style of a specified color to image labels, e.g. gray, #eee, rgb(0,0,0)
+  /c, /css:               custom css file path
+      /theme:[vue|side]   output HTML theme
+      /toc                generate TOC
+      /level:[1|2|3|4|5]  The heading level when generating TOC (default: 3)
+  /g, /gen                use HTML comments to record generation time
 
 Help Options:
-  /?                     Show this help message
-  /h, /help              Show this help message
+  /?                      Show this help message
+  /h, /help               Show this help message
 ```
 
 ### 样例

@@ -51,8 +51,11 @@ type Options struct {
 	BorderColor string `long:"border" short:"b" description:"add a border style of a specified color to image labels, e.g. gray, #eee, rgb(0,0,0)"`
 	CustomCSS   string `long:"css" short:"c" description:"custom css file path"`
 	Theme       string `long:"theme" choice:"vue" choice:"side" description:"output HTML theme"`
-	TOC         bool   `long:"toc" description:"generate TOC"`
-	Generated   bool   `long:"gen" short:"g" description:"use HTML comments to record generation time"`
+
+	TOC      bool  `long:"toc" description:"generate TOC"`
+	TOCLevel uint8 `long:"level" description:"The heading level when generating TOC" choice:"1" choice:"2" choice:"3" choice:"4" choice:"5" default:"3"`
+
+	Generated bool `long:"gen" short:"g" description:"use HTML comments to record generation time"`
 }
 
 // goldmark convert options
@@ -105,6 +108,8 @@ type HTMLParser struct {
 	ImageBorder bool
 	Favicon     bool
 	CSS         bool
+
+	TOCHeadingSelector string
 
 	FaviconHref   template.HTML
 	MathJaxConfig template.HTML
@@ -286,6 +291,19 @@ func (p *HTMLParser) writeHTML(html string) (err error) {
 		},
 	}).Parse(string(themeTmpl)); err != nil {
 		return
+	}
+
+	if p.TOC {
+		if p.TOCLevel == 0 {
+			p.TOCLevel = 3
+		} else if p.TOCLevel > 5 {
+			p.TOCLevel = 5
+		}
+		var levels []string
+		for i := 1; i <= int(p.TOCLevel); i++ {
+			levels = append(levels, fmt.Sprintf("h%d", i))
+		}
+		p.TOCHeadingSelector = strings.Join(levels, ", ")
 	}
 
 	dir := filepath.Dir(p.OutputFile)
