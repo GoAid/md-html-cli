@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
+	_ "github.com/godoes/winseq" // Windows 虚拟终端序列
 	"github.com/jessevdk/go-flags"
-	_ "github.com/wzshiming/winseq" // Windows 虚拟终端序列
 )
 
 // CLI utility for converting markdown to a single html file

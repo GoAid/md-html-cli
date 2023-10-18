@@ -14,12 +14,11 @@ go get github.com/PuerkitoBio/goquery@latest
 go get github.com/alecthomas/chroma/v2@latest
 go get github.com/jessevdk/go-flags@latest
 go get github.com/stefanfritsch/goldmark-fences@latest
-go get github.com/wzshiming/winseq@latest
+go get github.com/godoes/winseq@latest
 go get github.com/yuin/goldmark@latest
 go get github.com/yuin/goldmark-emoji@latest
 go get github.com/yuin/goldmark-highlighting/v2@latest
 go get go.abhg.dev/goldmark/mermaid@latest
-go get oss.terrastruct.com/d2@latest
 
 echo 2. ÕûÀíÄ£¿éÒÀÀµ...
 go mod tidy & echo.
