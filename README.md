@@ -46,6 +46,7 @@ Application Options:
   /t, /title:            custom html title, default is output file name
   /f, /favicon:          favicon image path, if embed is used, will embed by base64 encoding
   /e, /embed             embed image by base64 encoding
+      /center            whether to center the image
   /m, /mathjax           use MathJax
   /s, /span              enable table row/col span
   /b, /border:           add a border style of a specified color to image labels, e.g. gray, #eee, rgb(0,0,0)

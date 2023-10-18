@@ -43,6 +43,7 @@ type Options struct {
 	HTMLTitle   string `long:"title" short:"t" description:"custom html title, default is output file name"`
 	HTMLFavicon string `long:"favicon" short:"f" description:"favicon image path, if embed is used, will embed by base64 encoding"`
 	EmbedImage  bool   `long:"embed" short:"e" description:"embed image by base64 encoding"`
+	ImageCenter bool   `long:"center" description:"whether to center the image"`
 
 	MathJax   bool `long:"mathjax" short:"m" description:"use MathJax"`
 	TableSpan bool `long:"span" short:"s" description:"enable table row/col span"`
