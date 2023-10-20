@@ -6,8 +6,10 @@ require (
 	github.com/FurqanSoftware/goldmark-d2 v0.0.0-20230720101241-95b0e4d3e127
 	github.com/PuerkitoBio/goquery v1.8.1
 	github.com/alecthomas/chroma/v2 v2.9.1
-	github.com/godoes/winseq v0.0.5
+	github.com/fatih/color v1.15.0
+	github.com/godoes/winseq v0.0.6
 	github.com/jessevdk/go-flags v1.5.0
+	github.com/mattn/go-colorable v0.1.13
 	github.com/stefanfritsch/goldmark-fences v1.0.0
 	github.com/yuin/goldmark v1.5.6
 	github.com/yuin/goldmark-emoji v1.0.2
@@ -23,12 +25,10 @@ require (
 	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/dlclark/regexp2 v1.10.0 // indirect
 	github.com/dop251/goja v0.0.0-20230216180835-5937a312edda // indirect
-	github.com/fatih/color v1.14.1 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
-	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
 	github.com/mazznoer/csscolorparser v0.1.3 // indirect
 	github.com/rivo/uniseg v0.4.3 // indirect
@@ -37,7 +37,7 @@ require (
 	golang.org/x/exp v0.0.0-20230213192124-5e25df0256eb // indirect
 	golang.org/x/image v0.5.0 // indirect
 	golang.org/x/net v0.8.0 // indirect
-	golang.org/x/sys v0.11.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/term v0.6.0 // indirect
 	golang.org/x/text v0.8.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect

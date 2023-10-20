@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"html/template"
 	"io"
@@ -20,6 +21,8 @@ import (
 	"github.com/GoAid/md-html-cli/assets"
 	"github.com/PuerkitoBio/goquery"
 	cfh "github.com/alecthomas/chroma/v2/formatters/html"
+	"github.com/fatih/color"
+	"github.com/mattn/go-colorable"
 	fences "github.com/stefanfritsch/goldmark-fences"
 	"github.com/yuin/goldmark"
 	emoji "github.com/yuin/goldmark-emoji"
@@ -94,13 +97,16 @@ var (
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	}
+
+	colorBold = color.New(color.Bold)
+	colorRed  = color.New(color.FgHiRed)
 )
 
-const (
-	bold      = "\033[39;1m"
-	highlight = "\033[32m"
-	reset     = "\033[0m"
-)
+func init() {
+	var enableColor bool
+	colorable.EnableColorsStdout(&enableColor)
+	color.NoColor = !enableColor
+}
 
 type HTMLParser struct {
 	Options
@@ -123,7 +129,7 @@ type HTMLParser struct {
 }
 
 func (p *HTMLParser) parserMarkdown(files []string) (htmlContent string) {
-	fmt.Println("⌚  Converting Markdown to HTML ...")
+	color.HiMagenta("⌚  Converting Markdown to HTML ...")
 	p.begin = time.Now()
 
 	mdParser := goldmark.New(
@@ -140,17 +146,17 @@ func (p *HTMLParser) parserMarkdown(files []string) (htmlContent string) {
 		}
 		htmlStr, err := p.renderHTMLConcat(files, mdParser)
 		if err != nil {
-			_, _ = fmt.Fprintln(os.Stderr, err)
+			_, _ = colorRed.Fprintln(color.Error, err)
 			os.Exit(1)
 		}
-		if err := p.writeHTML(htmlStr); err != nil {
-			_, _ = fmt.Fprintln(os.Stderr, err)
+		if err = p.writeHTML(htmlStr); err != nil {
+			_, _ = colorRed.Fprintln(color.Error, err)
 		}
 	} else {
 		for _, file := range files {
 			htmlStr, err := p.renderHTML(file, mdParser)
 			if err != nil {
-				_, _ = fmt.Fprintln(os.Stderr, err)
+				_, _ = colorRed.Fprintln(color.Error, err)
 				os.Exit(1)
 			}
 
@@ -158,14 +164,15 @@ func (p *HTMLParser) parserMarkdown(files []string) (htmlContent string) {
 				p.HTMLTitle = file
 			}
 			p.OutputFile = strings.TrimSuffix(file, filepath.Ext(file)) + ".html"
-			if err := p.writeHTML(htmlStr); err != nil {
-				_, _ = fmt.Fprintln(os.Stderr, err)
+			if err = p.writeHTML(htmlStr); err != nil {
+				_, _ = colorRed.Fprintln(color.Error, err)
 			}
 			p.begin = time.Now()
 		}
 	}
 
-	fmt.Printf(`✨  Convert of "%s%s%s" is completed! (%s%v%s)%s`, highlight, p.InputFile, reset, bold, p.Elapsed, reset, "\n")
+	_, _ = fmt.Fprintf(color.Output, "✨  %s%s%s (%v)", color.HiYellowString("Convert of `"),
+		color.GreenString(p.InputFile), color.HiYellowString("` is completed!"), colorBold.Sprint(p.Elapsed))
 	return
 }
 
@@ -211,7 +218,7 @@ func (p *HTMLParser) renderHTMLConcat(inputs []string, markdown goldmark.Markdow
 }
 
 func (p *HTMLParser) writeHTML(html string) (err error) {
-	fmt.Println("⏳  Converting", bold, p.OutputFile, reset, "...")
+	_, _ = fmt.Fprintln(color.Output, "⏳  Converting", colorBold.Sprint(p.OutputFile), "...")
 	if strings.TrimSpace(p.HTMLLang) == "" {
 		p.HTMLLang = "en"
 	}
@@ -221,7 +228,7 @@ func (p *HTMLParser) writeHTML(html string) (err error) {
 		if p.EmbedImage {
 			if f, _ := os.Stat(p.HTMLFavicon); f != nil && !f.IsDir() {
 				cwd, _ := os.Getwd()
-				if src, err := decodeBase64(p.HTMLFavicon, cwd); err == nil {
+				if src, e := decodeBase64(p.HTMLFavicon, cwd); e == nil {
 					mimeType := getImageMime(p.HTMLFavicon)
 					p.HTMLFavicon = fmt.Sprintf("data:%s;base64,%s", mimeType, src)
 				}
@@ -231,8 +238,7 @@ func (p *HTMLParser) writeHTML(html string) (err error) {
 	}
 
 	if p.MathJax {
-		html, err = replaceMathJaxCodeBlock(html)
-		if err != nil {
+		if html, err = replaceMathJaxCodeBlock(html); err != nil {
 			return err
 		}
 		p.MathJaxConfig = template.HTML(fmt.Sprintf(`<script type="text/x-mathjax-config">%s</script>`, assets.EmbedMathJaxConfig))
@@ -358,10 +364,13 @@ func decodeBase64(src, parent string) (string, error) {
 	}
 	f, err := os.Open(path)
 	if err != nil {
-		pathErr := err.(*os.PathError)
-		errno := pathErr.Err.(syscall.Errno)
+		var pathErr *os.PathError
+		errors.As(err, &pathErr)
+		var errno syscall.Errno
+		errors.As(pathErr.Err, &errno)
+
 		if errno != 0x7B { // suppress ERROR_INVALID_NAME
-			_, _ = fmt.Fprintln(os.Stderr, err)
+			_, _ = colorRed.Fprintln(color.Error, err)
 			return "", nil
 		}
 		return "", err
@@ -403,12 +412,12 @@ func embedImage(src, parent string) (string, error) {
 		}
 		b64img, err := decodeBase64(imgSrc, parent)
 		if err != nil {
-			_, _ = fmt.Fprintln(os.Stderr, err)
+			_, _ = colorRed.Fprintln(color.Error, err)
 			continue
 		}
 
-		reReplace, err := regexp.Compile(`(<img[\S\s]+?src=")` + regexp.QuoteMeta(imgSrc) + `("[\S\s]*?/?>)`)
-		if err != nil {
+		var reReplace *regexp.Regexp
+		if reReplace, err = regexp.Compile(`(<img[\S\s]+?src=")` + regexp.QuoteMeta(imgSrc) + `("[\S\s]*?/?>)`); err != nil {
 			return src, err
 		}
 

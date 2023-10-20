@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 
+	"github.com/fatih/color"
 	_ "github.com/godoes/winseq" // Windows 虚拟终端序列
 	"github.com/jessevdk/go-flags"
 )
@@ -21,21 +21,21 @@ func main() {
 		inputs = []string{opts.InputFile}
 	}
 	if len(inputs) <= 0 {
-		_, _ = fmt.Fprintln(os.Stderr, "Please specify input Markdown")
+		_, _ = colorRed.Fprintln(color.Error, "Please specify input Markdown")
 		os.Exit(1)
 	}
 
 	var files []string
 	for _, input := range inputs {
-		f, err := filepath.Glob(input)
-		if err != nil {
-			_, _ = fmt.Fprintln(os.Stderr, err)
+		var f []string
+		if f, err = filepath.Glob(input); err != nil {
+			_, _ = colorRed.Fprintln(color.Error, err)
 			os.Exit(1)
 		}
 		files = append(files, f...)
 	}
 	if len(files) <= 0 {
-		_, _ = fmt.Fprintln(os.Stderr, "File is not found")
+		_, _ = colorRed.Fprintln(color.Error, "File is not found")
 		os.Exit(1)
 	}
 
