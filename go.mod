@@ -5,13 +5,13 @@ go 1.17
 require (
 	github.com/FurqanSoftware/goldmark-d2 v0.0.0-20230720101241-95b0e4d3e127
 	github.com/PuerkitoBio/goquery v1.8.1
-	github.com/alecthomas/chroma/v2 v2.9.1
+	github.com/alecthomas/chroma/v2 v2.10.0
 	github.com/fatih/color v1.15.0
 	github.com/godoes/winseq v0.0.6
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/mattn/go-colorable v0.1.13
 	github.com/stefanfritsch/goldmark-fences v1.0.0
-	github.com/yuin/goldmark v1.5.6
+	github.com/yuin/goldmark v1.6.0
 	github.com/yuin/goldmark-emoji v1.0.2
 	github.com/yuin/goldmark-highlighting/v2 v2.0.0-20230729083705-37449abec8cc
 	go.abhg.dev/goldmark/mermaid v0.4.0
