@@ -401,15 +401,24 @@ func embedImage(src, parent string) (string, error) {
 	dest := src
 
 	reFind := regexp.MustCompile(`(<img[\S\s]+?src=")([\S\s]+?)("[\S\s]*?/?>)`)
-	reUrl := regexp.MustCompile(`(?i)^https?://.*`)
+	reUrl := regexp.MustCompile(`(?i)^(https?://|data:).*`)
 
 	imgTags := reFind.FindAllString(src, -1)
-	for _, t := range imgTags {
+	for i, t := range imgTags {
 		imgSrc := reFind.ReplaceAllString(t, "$2")
 
 		if reUrl.MatchString(imgSrc) {
+			if overflow := 512; len(imgSrc) > overflow {
+				imgSrc = imgSrc[:overflow] + " ..."
+			}
+			color.Yellow("🙈  Embed Image Ignore [%d] %s", i+1, imgSrc)
 			continue
 		}
+		if f, e := os.Stat(imgSrc); os.IsNotExist(e) || f.IsDir() {
+			// no image file found
+			continue
+		}
+
 		b64img, err := decodeBase64(imgSrc, parent)
 		if err != nil {
 			_, _ = colorRed.Fprintln(color.Error, err)
