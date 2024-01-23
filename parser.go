@@ -71,7 +71,7 @@ var (
 		emoji.Emoji,
 		//mathjax.MathJax,
 		new(fences.Extender),
-		new(mermaid.Extender),
+		&mermaid.Extender{MermaidURL: "https://cdn.staticfile.net/mermaid/10.7.0/mermaid.min.js"},
 		&d2.Extender{
 			Layout:  d2dagrelayout.DefaultLayout,
 			ThemeID: &d2themescatalog.EvergladeGreen.ID,
