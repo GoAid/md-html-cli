@@ -7,7 +7,6 @@ require (
 	github.com/PuerkitoBio/goquery v1.8.1
 	github.com/alecthomas/chroma/v2 v2.10.0
 	github.com/fatih/color v1.15.0
-	github.com/godoes/winseq v0.0.6
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/mattn/go-colorable v0.1.13
 	github.com/stefanfritsch/goldmark-fences v1.0.0

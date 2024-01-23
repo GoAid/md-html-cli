@@ -5,7 +5,6 @@ import (
 	"path/filepath"
 
 	"github.com/fatih/color"
-	_ "github.com/godoes/winseq" // Windows 虚拟终端序列
 	"github.com/jessevdk/go-flags"
 )
 

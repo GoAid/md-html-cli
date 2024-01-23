@@ -14,7 +14,6 @@ go get github.com/PuerkitoBio/goquery@latest
 go get github.com/alecthomas/chroma/v2@latest
 go get github.com/jessevdk/go-flags@latest
 go get github.com/stefanfritsch/goldmark-fences@latest
-go get github.com/godoes/winseq@latest
 go get github.com/yuin/goldmark@latest
 go get github.com/yuin/goldmark-emoji@latest
 go get github.com/yuin/goldmark-highlighting/v2@latest
