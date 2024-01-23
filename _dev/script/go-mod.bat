@@ -18,6 +18,7 @@ go get github.com/yuin/goldmark@latest
 go get github.com/yuin/goldmark-emoji@latest
 go get github.com/yuin/goldmark-highlighting/v2@latest
 go get go.abhg.dev/goldmark/mermaid@latest
+go get oss.terrastruct.com/d2@latest
 
 echo 2. ÕûÀíÄ£¿éÒÀÀµ...
 go mod tidy & echo.

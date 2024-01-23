@@ -74,7 +74,7 @@ var (
 		new(mermaid.Extender),
 		&d2.Extender{
 			Layout:  d2dagrelayout.DefaultLayout,
-			ThemeID: d2themescatalog.EvergladeGreen.ID,
+			ThemeID: &d2themescatalog.EvergladeGreen.ID,
 			Sketch:  true,
 		},
 		highlighting.NewHighlighting(
