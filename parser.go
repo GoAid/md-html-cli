@@ -362,6 +362,10 @@ func decodeBase64(src, parent string) (string, error) {
 	if !filepath.IsAbs(path) {
 		path = filepath.Join(parent, path)
 	}
+	if fi, err := os.Stat(path); os.IsNotExist(err) || fi.IsDir() {
+		// no image file found
+		return path, err
+	}
 	f, err := os.Open(path)
 	if err != nil {
 		var pathErr *os.PathError
@@ -412,10 +416,6 @@ func embedImage(src, parent string) (string, error) {
 				imgSrc = imgSrc[:overflow] + " ..."
 			}
 			color.Yellow("🙈  Embed Image Ignore [%d] %s", i+1, imgSrc)
-			continue
-		}
-		if f, e := os.Stat(imgSrc); os.IsNotExist(e) || f.IsDir() {
-			// no image file found
 			continue
 		}
 
