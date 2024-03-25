@@ -71,17 +71,22 @@ var (
 		emoji.Emoji,
 		//mathjax.MathJax,
 		new(fences.Extender),
-		&mermaid.Extender{MermaidURL: "https://cdn.staticfile.net/mermaid/10.7.0/mermaid.min.js"},
+		&mermaid.Extender{
+			MermaidURL: "https://cdn.staticfile.net/mermaid/10.7.0/mermaid.min.js",
+			Theme:      "forest",
+		},
 		&d2.Extender{
 			Layout:  d2dagrelayout.DefaultLayout,
 			ThemeID: &d2themescatalog.EvergladeGreen.ID,
 			Sketch:  true,
 		},
 		highlighting.NewHighlighting(
+			highlighting.WithGuessLanguage(true),
 			// https://xyproto.github.io/splash/docs/
 			// https://xyproto.github.io/splash/docs/all.html#monokailight
 			highlighting.WithStyle("monokailight"),
 			highlighting.WithFormatOptions(
+				cfh.TabWidth(4),
 				cfh.WithLineNumbers(true),
 			),
 		),
