@@ -47,7 +47,7 @@ jobs:
         run: GOOS=${{ matrix.GOOS }} GOARCH=${{ matrix.GOARCH }} go build -v -ldflags="-s -w" .
 
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.MODULE_NAME }}_${{ env.GITHUB_SHA_7 }}_${{ matrix.GOOS }}_${{ matrix.GOARCH }}${{ env.GOEXE }}
           path: ${{ env.MODULE_NAME }}${{ env.GOEXE }}
