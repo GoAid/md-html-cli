@@ -10,7 +10,7 @@ cd
 ::& go get -d -u & echo.
 
 go get github.com/FurqanSoftware/goldmark-d2@latest
-go get github.com/PuerkitoBio/goquery@latest
+go get github.com/PuerkitoBio/goquery@v1.9.1
 go get github.com/alecthomas/chroma/v2@latest
 go get github.com/jessevdk/go-flags@latest
 go get github.com/stefanfritsch/goldmark-fences@latest
@@ -18,7 +18,7 @@ go get github.com/yuin/goldmark@latest
 go get github.com/yuin/goldmark-emoji@latest
 go get github.com/yuin/goldmark-highlighting/v2@latest
 go get go.abhg.dev/goldmark/mermaid@latest
-go get oss.terrastruct.com/d2@latest
+go get oss.terrastruct.com/d2@v0.6.3
 
 echo 2. ÕûÀíÄ£¿éÒÀÀµ...
 go mod tidy & echo.
