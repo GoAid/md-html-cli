@@ -42,6 +42,8 @@ type Options struct {
 	InputFile  string `long:"input" short:"i" description:"input Markdown"`
 	OutputFile string `long:"output" short:"o" description:"output HTML"`
 
+	ReplaceData map[string]string `long:"replace" short:"r" description:"replace content key-value pairs"`
+
 	HTMLLang    string `long:"lang" short:"l" description:"html lang attribute value, default is en"`
 	HTMLTitle   string `long:"title" short:"t" description:"custom html title, default is output file name"`
 	HTMLFavicon string `long:"favicon" short:"f" description:"favicon image path, if embed is used, will embed by base64 encoding"`
@@ -194,6 +196,11 @@ func (p *HTMLParser) renderHTML(input string, markdown goldmark.Markdown) (htmlS
 	if md, err = io.ReadAll(fi); err != nil {
 		return
 	}
+
+	for src, dst := range p.ReplaceData {
+		md = bytes.ReplaceAll(md, []byte(src), []byte(dst))
+	}
+
 	var buf bytes.Buffer
 	if err = markdown.Convert(md, &buf, parser.WithContext(ctx)); err != nil {
 		return

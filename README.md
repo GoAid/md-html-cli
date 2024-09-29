@@ -42,6 +42,7 @@ Usage:
 Application Options:
   /i, /input:             input Markdown
   /o, /output:            output HTML
+  /r, /replace:           replace content key-value pairs
   /l, /lang:              html lang attribute value, default is en
   /t, /title:             custom html title, default is output file name
   /f, /favicon:           favicon image path, if embed is used, will embed by base64 encoding
