@@ -6,7 +6,7 @@ require (
 	github.com/FurqanSoftware/goldmark-d2 v0.0.0-20240222042550-23ef2a4e585c
 	github.com/PuerkitoBio/goquery v1.9.1
 	github.com/alecthomas/chroma/v2 v2.14.0
-	github.com/fatih/color v1.16.0
+	github.com/fatih/color v1.17.0
 	github.com/jessevdk/go-flags v1.6.1
 	github.com/mattn/go-colorable v0.1.13
 	github.com/stefanfritsch/goldmark-fences v1.0.0

@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         GOOS: [windows, linux]
-        GOARCH: [386, amd64]
+        GOARCH: ["386", "amd64"]
     steps:
       - name: Set up Go 1.x
         uses: actions/setup-go@v5
