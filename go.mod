@@ -10,7 +10,7 @@ require (
 	github.com/jessevdk/go-flags v1.6.1
 	github.com/mattn/go-colorable v0.1.13
 	github.com/stefanfritsch/goldmark-fences v1.0.0
-	github.com/yuin/goldmark v1.7.4
+	github.com/yuin/goldmark v1.7.6
 	github.com/yuin/goldmark-emoji v1.0.3
 	github.com/yuin/goldmark-highlighting/v2 v2.0.0-20230729083705-37449abec8cc
 	go.abhg.dev/goldmark/mermaid v0.5.0
